@@ -7,6 +7,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import mzinin.petproject.s2e2.operators.OperatorAnd;
+import mzinin.petproject.s2e2.operators.OperatorEqual;
+import mzinin.petproject.s2e2.operators.OperatorGreater;
+import mzinin.petproject.s2e2.operators.OperatorGreaterOrEqual;
+import mzinin.petproject.s2e2.operators.OperatorLess;
+import mzinin.petproject.s2e2.operators.OperatorLessOrEqual;
+import mzinin.petproject.s2e2.operators.OperatorNot;
+import mzinin.petproject.s2e2.operators.OperatorNotEqual;
+import mzinin.petproject.s2e2.operators.OperatorOr;
+import mzinin.petproject.s2e2.operators.OperatorPlus;
+
+
 /**
  * Evaluates string values of expressions.
  */
@@ -72,6 +84,23 @@ public final class Evaluator {
         operators.put(operator.name, operator);
         converter.addOperator(operator.name, operator.priority);
         tokenizer.addOperator(operator.name);
+    }
+
+    /**
+     * Add standard operators to set of supported operators.
+     * @throws ExpressionException if there is a collision of operators names.
+     */
+    public void addStandardOperators() {
+        addOperator(new OperatorAnd());
+        addOperator(new OperatorEqual());
+        addOperator(new OperatorGreater());
+        addOperator(new OperatorGreaterOrEqual());
+        addOperator(new OperatorLess());
+        addOperator(new OperatorLessOrEqual());
+        addOperator(new OperatorNot());
+        addOperator(new OperatorNotEqual());
+        addOperator(new OperatorOr());
+        addOperator(new OperatorPlus());
     }
 
     /**
