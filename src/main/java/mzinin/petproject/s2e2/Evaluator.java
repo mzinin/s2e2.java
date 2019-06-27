@@ -1,11 +1,10 @@
 package mzinin.petproject.s2e2;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
+import mzinin.petproject.s2e2.functions.FunctionAddDays;
+import mzinin.petproject.s2e2.functions.FunctionFormatDate;
+import mzinin.petproject.s2e2.functions.FunctionIf;
+import mzinin.petproject.s2e2.functions.FunctionNow;
+import mzinin.petproject.s2e2.functions.FunctionReplace;
 
 import mzinin.petproject.s2e2.operators.OperatorAnd;
 import mzinin.petproject.s2e2.operators.OperatorEqual;
@@ -17,6 +16,13 @@ import mzinin.petproject.s2e2.operators.OperatorNot;
 import mzinin.petproject.s2e2.operators.OperatorNotEqual;
 import mzinin.petproject.s2e2.operators.OperatorOr;
 import mzinin.petproject.s2e2.operators.OperatorPlus;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 
 
 /**
@@ -87,8 +93,20 @@ public final class Evaluator {
     }
 
     /**
+     * Add standard functions to set of supported functions.
+     * @throws ExpressionException if there is a collision between functions names.
+     */
+    public void addStandardFunctions() {
+        addFunction(new FunctionAddDays());
+        addFunction(new FunctionFormatDate());
+        addFunction(new FunctionIf());
+        addFunction(new FunctionNow());
+        addFunction(new FunctionReplace());
+    }
+
+    /**
      * Add standard operators to set of supported operators.
-     * @throws ExpressionException if there is a collision of operators names.
+     * @throws ExpressionException if there is a collision between operators names.
      */
     public void addStandardOperators() {
         addOperator(new OperatorAnd());
