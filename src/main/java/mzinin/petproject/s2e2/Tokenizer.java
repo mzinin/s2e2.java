@@ -11,7 +11,7 @@ import java.util.TreeMap;
 /**
  * Splits plain string expressions into list of tokens.
  */
-class Tokenizer implements ITokenizer {
+final class Tokenizer implements ITokenizer {
 
     // Flag of "inside quotes" state. If set it means that current symbol belongs to an atom.
     private boolean insideQuotes = false;

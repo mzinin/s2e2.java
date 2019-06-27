@@ -11,15 +11,21 @@ import java.util.Stack;
  * Converts infix token sequence into postfix one.
  * Convertion is done by Shunting Yard algorithm.
  */
-class Converter implements IConverter {
+final class Converter implements IConverter {
 
-    // Output queue of all tokens.
+    /**
+     * Output queue of all tokens.
+     */
     private List<Token> outputQueue = null;
 
-    // Stack of operators and functions.
+    /**
+     * Stack of operators and functions.
+     */
     private Stack<Token> operatorStack = null;
 
-    // All expected operators and their priorities (precedences)
+    /**
+     * All expected operators and their priorities (precedences).
+     */
     private Map<String, Integer> operators = new HashMap<>();
 
     /**

@@ -4,7 +4,7 @@ package mzinin.petproject.s2e2;
 /**
  * Token i.e. a unit of some expression.
  */
-class Token {
+final class Token {
 
     /**
      * Token type.
