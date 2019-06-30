@@ -15,7 +15,7 @@ public final class FunctionIf extends Function {
 
     @Override
     protected boolean checkArguments() {
-        return arguments[0] != null && arguments[0] instanceof Boolean;
+        return arguments[0] instanceof Boolean;
     }
 
     @Override
