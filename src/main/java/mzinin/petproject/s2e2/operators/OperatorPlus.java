@@ -15,12 +15,23 @@ public final class OperatorPlus extends Operator {
 
     @Override
     protected boolean checkArguments() {
-        return arguments[0] instanceof String &&
-               arguments[1] instanceof String;
+        return (arguments[0] == null || arguments[0] instanceof String) &&
+               (arguments[1] == null || arguments[1] instanceof String);
     }
 
     @Override
     protected Object result() {
-        return (String)arguments[0] + (String)arguments[1];
+        if (arguments[0] == null && arguments[1] == null) {
+            return null;
+        }
+
+        String result = "";
+        if (arguments[0] != null) {
+            result += (String)arguments[0];
+        }
+        if (arguments[1] != null) {
+            result += (String)arguments[1];
+        }
+        return result;
     }
 }
