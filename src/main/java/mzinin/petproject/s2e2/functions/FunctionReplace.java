@@ -15,8 +15,8 @@ public final class FunctionReplace extends Function {
 
     @Override
     protected boolean checkArguments() {
-        return arguments[0] != null && arguments[0] instanceof String &&
-               arguments[1] instanceof String &&
+        return (arguments[0] == null || arguments[0] instanceof String) &&
+               arguments[1] instanceof String && !((String)arguments[1]).isEmpty() &&
                arguments[2] instanceof String;
     }
 
@@ -29,7 +29,7 @@ public final class FunctionReplace extends Function {
 
         final String regex = (String)arguments[1];
         final String replacement = (String)arguments[2];
-        
+
         return source.replaceAll(regex, replacement);
     }
 }
