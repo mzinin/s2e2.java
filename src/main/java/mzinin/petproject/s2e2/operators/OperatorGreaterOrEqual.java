@@ -15,8 +15,8 @@ public final class OperatorGreaterOrEqual extends Operator {
 
     @Override
     protected boolean checkArguments() {
-        return arguments[0] instanceof String &&
-               arguments[1] instanceof String;
+        return (arguments[0] == null && arguments[1] == null) ||
+               (arguments[0] instanceof String && arguments[1] instanceof String);
     }
 
     @Override
