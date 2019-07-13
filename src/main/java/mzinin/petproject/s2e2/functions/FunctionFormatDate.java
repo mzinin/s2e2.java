@@ -18,8 +18,18 @@ public final class FunctionFormatDate extends Function {
 
     @Override
     protected boolean checkArguments() {
-        return arguments[0] instanceof OffsetDateTime &&
-               arguments[1] instanceof String;
+        if (!(arguments[0] instanceof OffsetDateTime) ||
+            !(arguments[1] instanceof String)) {
+            return false;
+        }
+
+        try {
+            DateTimeFormatter.ofPattern((String)arguments[1]);
+        } catch (final Exception e) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override
