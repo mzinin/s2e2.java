@@ -21,9 +21,6 @@ public final class OperatorGreater extends Operator {
 
     @Override
     protected Object result() {
-        if (arguments[0] == null || arguments[1] == null) {
-            return false;
-        }
         return ((String)arguments[0]).compareTo((String)arguments[1]) > 0;
     }
 }
