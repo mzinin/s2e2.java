@@ -44,7 +44,7 @@ class FunctionNowTests {
         final OffsetDateTime functionResult = (OffsetDateTime)stack.peek();
         final long maxDifferenceInSeconds = 2;
 
-        assertTrue(now.isAfter(functionResult));
+        assertTrue(now.isEqual(functionResult) || now.isAfter(functionResult));
         assertTrue(now.toEpochSecond() - functionResult.toEpochSecond() < maxDifferenceInSeconds);
     }
 
