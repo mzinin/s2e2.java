@@ -41,18 +41,24 @@ final class Tokenizer implements ITokenizer {
     /**
      * Add function expected within expression.
      * @param function Function's name.
+     * @throws ExpressionException if function or operator with the same name is already added.
      */
     @Override
     public void addFunction(final String function) {
+        checkUniqueness(function);
+
         functions.add(function);
     }
 
     /**
      * Add operator expected within expression.
-     * @param operator Operator's symbols
+     * @param operator Operator's symbols a.k.a. name.
+     * @throws ExpressionException if function or operator with the same name is already added.
      */
     @Override
     public void addOperator(final String operator) {
+        checkUniqueness(operator);
+
         operators.add(operator);
         operatorsByLength.putIfAbsent(operator.length(), new HashSet<>());
         operatorsByLength.get(operator.length()).add(operator);
@@ -76,6 +82,20 @@ final class Tokenizer implements ITokenizer {
         final List<Token> result = tokens;
         tokens = null;
         return result;
+    }
+
+    /**
+     * Check is function's or operator's name is unique.
+     * @param entityName Function's or operator's name.
+     * @throws ExpressionException if the name is not unique.
+     */
+    private void checkUniqueness(final String entityName) {
+        if (functions.contains(entityName)) {
+            throw new ExpressionException("Function " + entityName + " is already added");
+        }
+        if (operators.contains(entityName)) {
+            throw new ExpressionException("Operator " + entityName + " is already added");
+        }
     }
 
     /**
