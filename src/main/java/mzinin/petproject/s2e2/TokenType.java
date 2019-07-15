@@ -22,7 +22,7 @@ enum TokenType {
     FUNCTION,
 
     /**
-     * Expression is either an atom or conbination of several tokens.
+     * Expression is either an atom or combination of several tokens.
      * Can be splitted.
      */
     EXPRESSION,
