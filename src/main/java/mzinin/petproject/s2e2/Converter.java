@@ -35,6 +35,10 @@ final class Converter implements IConverter {
      */
     @Override
     public void addOperator(final String name, final int priority) {
+        if (operators.containsKey(name)) {
+            throw new ExpressionException("Operator " + name + " is already added");
+        }
+
         operators.put(name, priority);
     }
 
@@ -140,9 +144,13 @@ final class Converter implements IConverter {
     /**
      * Process OPERATOR token.
      * @param token Token.
+     * @throws ExpressionException in case of an unknown operator.
      */
     private void processOperator(final Token token) {
-        final int priority = operators.get(token.value);
+        final Integer priority = operators.get(token.value);
+        if (priority == null) {
+            throw new ExpressionException("Unknown operator " + token.value);
+        }
 
         while (!operatorStack.isEmpty() &&
                operatorStack.peek().type.equals(TokenType.OPERATOR) &&
