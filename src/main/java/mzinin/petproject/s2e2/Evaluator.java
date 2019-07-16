@@ -66,12 +66,10 @@ public final class Evaluator {
     /**
      * Add function to set of supported functions.
      * @param function New supported function.
-     * @throws ExpressionException if function with the same name is already added.
+     * @throws ExpressionException if function or operator with the same name is already added.
      */
     public void addFunction(final Function function) {
-        if (functions.containsKey(function.name)) {
-            throw new ExpressionException("Function " + function.name + " is already added");
-        }
+        checkUniqueness(function.name);
 
         functions.put(function.name, function);
         tokenizer.addFunction(function.name);
@@ -80,12 +78,10 @@ public final class Evaluator {
     /**
      * Add operator to set of supported operators.
      * @param operator New supported operator.
-     * @throws ExpressionException if operator with the same name is already added.
+     * @throws ExpressionException if function or operator with the same name is already added.
      */
     public void addOperator(final Operator operator) {
-        if (operators.containsKey(operator.name)) {
-            throw new ExpressionException("Operator " + operator.name + " is already added");
-        }
+        checkUniqueness(operator.name);
 
         operators.put(operator.name, operator);
         converter.addOperator(operator.name, operator.priority);
@@ -164,6 +160,20 @@ public final class Evaluator {
     Evaluator(final IConverter converter, final ITokenizer tokenizer) {
         this.converter = converter;
         this.tokenizer = tokenizer;
+    }
+
+    /**
+     * Check is function's or operator's name is unique.
+     * @param entityName Function's or operator's name.
+     * @throws ExpressionException if the name is not unique.
+     */
+    private void checkUniqueness(final String entityName) {
+        if (functions.containsKey(entityName)) {
+            throw new ExpressionException("Function " + entityName + " is already added");
+        }
+        if (operators.containsKey(entityName)) {
+            throw new ExpressionException("Operator " + entityName + " is already added");
+        }
     }
 
     /**
@@ -248,6 +258,7 @@ public final class Evaluator {
             throw new ExpressionException("Invalid expression");
         }
 
-        return stack.pop().toString();
+        final Object result = stack.pop();
+        return result == null ? null : result.toString();
     }
 }
