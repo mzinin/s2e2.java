@@ -35,7 +35,7 @@ class OperatorLessOrEqualTests {
     }
 
     @Test
-    void positiveTest_SameArguments_ResultValue() {
+    void positiveTest_SameStrings_ResultValue() {
         final OperatorLessOrEqual operator = new OperatorLessOrEqual();
         final Stack<Object> stack = TestUtils.createStack("String1", "String1");
 
@@ -45,9 +45,19 @@ class OperatorLessOrEqualTests {
     }
 
     @Test
-    void positiveTest_EqualArguments_ResultValue() {
+    void positiveTest_EqualStrings_ResultValue() {
         final OperatorLessOrEqual operator = new OperatorLessOrEqual();
         final Stack<Object> stack = TestUtils.createStack(new String("String1"), new String("String1"));
+
+        TestUtils.invoke(operator, stack);
+
+        assertTrue((Boolean)stack.peek());
+    }
+
+    @Test
+    void positiveTest_SameIntegers_ResultValue() {
+        final OperatorLessOrEqual operator = new OperatorLessOrEqual();
+        final Stack<Object> stack = TestUtils.createStack(5, 5);
 
         TestUtils.invoke(operator, stack);
 
@@ -67,7 +77,7 @@ class OperatorLessOrEqualTests {
     @Test
     void positiveTest_SecondArgumentLess_ResultValue() {
         final OperatorLessOrEqual operator = new OperatorLessOrEqual();
-        final Stack<Object> stack = TestUtils.createStack("String2", "String1");
+        final Stack<Object> stack = TestUtils.createStack(55, 5);
 
         TestUtils.invoke(operator, stack);
 
@@ -134,35 +144,9 @@ class OperatorLessOrEqualTests {
     }
 
     @Test
-    void negativeTest_FirstArgumentWrongType() {
+    void negativeTest_ArgumentsOfDifferentTypes() {
         final OperatorLessOrEqual operator = new OperatorLessOrEqual();
         final Stack<Object> stack = TestUtils.createStack(5, "55");
-
-        final ExpressionException thrown = assertThrows(
-            ExpressionException.class,
-            () -> TestUtils.invoke(operator, stack),
-            "Expected OperatorLessOrEqual to throw, but it didn't");
-
-        assertTrue(thrown.getMessage().contains("Invalid arguments"));
-    }
-
-    @Test
-    void negativeTest_SecondArgumentWrongType() {
-        final OperatorLessOrEqual operator = new OperatorLessOrEqual();
-        final Stack<Object> stack = TestUtils.createStack("55", 5);
-
-        final ExpressionException thrown = assertThrows(
-            ExpressionException.class,
-            () -> TestUtils.invoke(operator, stack),
-            "Expected OperatorLessOrEqual to throw, but it didn't");
-
-        assertTrue(thrown.getMessage().contains("Invalid arguments"));
-    }
-
-    @Test
-    void negativeTest_BothArgumentsWrongType() {
-        final OperatorLessOrEqual operator = new OperatorLessOrEqual();
-        final Stack<Object> stack = TestUtils.createStack(55, 5);
 
         final ExpressionException thrown = assertThrows(
             ExpressionException.class,
