@@ -35,7 +35,7 @@ class OperatorGreaterTests {
     }
 
     @Test
-    void positiveTest_SameArguments_ResultValue() {
+    void positiveTest_SameStrings_ResultValue() {
         final OperatorGreater operator = new OperatorGreater();
         final Stack<Object> stack = TestUtils.createStack("String1", "String1");
 
@@ -45,9 +45,19 @@ class OperatorGreaterTests {
     }
 
     @Test
-    void positiveTest_EqualArguments_ResultValue() {
+    void positiveTest_EqualStrings_ResultValue() {
         final OperatorGreater operator = new OperatorGreater();
         final Stack<Object> stack = TestUtils.createStack(new String("String1"), new String("String1"));
+
+        TestUtils.invoke(operator, stack);
+
+        assertFalse((Boolean)stack.peek());
+    }
+
+    @Test
+    void positiveTest_EqualIntegers_ResultValue() {
+        final OperatorGreater operator = new OperatorGreater();
+        final Stack<Object> stack = TestUtils.createStack(Integer.valueOf(5001), Integer.valueOf(5001));
 
         TestUtils.invoke(operator, stack);
 
@@ -67,7 +77,7 @@ class OperatorGreaterTests {
     @Test
     void positiveTest_SecondArgumentGreater_ResultValue() {
         final OperatorGreater operator = new OperatorGreater();
-        final Stack<Object> stack = TestUtils.createStack("String1", "String2");
+        final Stack<Object> stack = TestUtils.createStack(5, 55);
 
         TestUtils.invoke(operator, stack);
 
@@ -124,22 +134,9 @@ class OperatorGreaterTests {
     }
 
     @Test
-    void negativeTest_FirstArgumentWrongType() {
+    void negativeTest_ArgumentsOfDifferentTypes() {
         final OperatorGreater operator = new OperatorGreater();
         final Stack<Object> stack = TestUtils.createStack(5, "55");
-
-        final ExpressionException thrown = assertThrows(
-            ExpressionException.class,
-            () -> TestUtils.invoke(operator, stack),
-            "Expected OperatorGreater to throw, but it didn't");
-
-        assertTrue(thrown.getMessage().contains("Invalid arguments"));
-    }
-
-    @Test
-    void negativeTest_SecondArgumentWrongType() {
-        final OperatorGreater operator = new OperatorGreater();
-        final Stack<Object> stack = TestUtils.createStack("55", 5);
 
         final ExpressionException thrown = assertThrows(
             ExpressionException.class,
