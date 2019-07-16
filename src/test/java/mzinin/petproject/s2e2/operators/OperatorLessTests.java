@@ -35,7 +35,7 @@ class OperatorLessTests {
     }
 
     @Test
-    void positiveTest_SameArguments_ResultValue() {
+    void positiveTest_SameStrings_ResultValue() {
         final OperatorLess operator = new OperatorLess();
         final Stack<Object> stack = TestUtils.createStack("String1", "String1");
 
@@ -45,9 +45,19 @@ class OperatorLessTests {
     }
 
     @Test
-    void positiveTest_EqualArguments_ResultValue() {
+    void positiveTest_EqualStrings_ResultValue() {
         final OperatorLess operator = new OperatorLess();
         final Stack<Object> stack = TestUtils.createStack(new String("String1"), new String("String1"));
+
+        TestUtils.invoke(operator, stack);
+
+        assertFalse((Boolean)stack.peek());
+    }
+
+    @Test
+    void positiveTest_SameIntegers_ResultValue() {
+        final OperatorLess operator = new OperatorLess();
+        final Stack<Object> stack = TestUtils.createStack(15, 15);
 
         TestUtils.invoke(operator, stack);
 
@@ -124,22 +134,9 @@ class OperatorLessTests {
     }
 
     @Test
-    void negativeTest_FirstArgumentWrongType() {
+    void negativeTest_ArgumentsOfDifferentTypes() {
         final OperatorLess operator = new OperatorLess();
         final Stack<Object> stack = TestUtils.createStack(5, "55");
-
-        final ExpressionException thrown = assertThrows(
-            ExpressionException.class,
-            () -> TestUtils.invoke(operator, stack),
-            "Expected OperatorLess to throw, but it didn't");
-
-        assertTrue(thrown.getMessage().contains("Invalid arguments"));
-    }
-
-    @Test
-    void negativeTest_SecondArgumentWrongType() {
-        final OperatorLess operator = new OperatorLess();
-        final Stack<Object> stack = TestUtils.createStack("55", 5);
 
         final ExpressionException thrown = assertThrows(
             ExpressionException.class,

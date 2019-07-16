@@ -5,7 +5,7 @@ import mzinin.petproject.s2e2.Operator;
 
 /**
  * Operator <
- * Compares two strings.
+ * Compares two objects.
  */
 public final class OperatorLess extends Operator {
 
@@ -15,15 +15,17 @@ public final class OperatorLess extends Operator {
 
     @Override
     protected boolean checkArguments() {
-        return arguments[0] instanceof String &&
-                arguments[1] instanceof String;
+        return arguments[0] instanceof Comparable &&
+               arguments[1] instanceof Comparable &&
+               arguments[0].getClass().equals(arguments[1].getClass());
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     protected Object result() {
-        if (arguments[0] == null || arguments[1] == null) {
-            return false;
-        }
-        return ((String)arguments[0]).compareTo((String)arguments[1]) < 0;
+        final Comparable<Object> arg0 = (Comparable<Object>)arguments[0];
+        final Comparable<Object> arg1 = (Comparable<Object>)arguments[1];
+
+        return arg0.compareTo(arg1) < 0;
     }
 }
