@@ -257,7 +257,7 @@ class TokenizerTests {
     }
 
     @Test
-    void negativeTest_dOperatorAndFunctionWithTheSameName() {
+    void negativeTest_OperatorAndFunctionWithTheSameName() {
         final Tokenizer tokenizer = new Tokenizer();
         tokenizer.addOperator("FF");
 
