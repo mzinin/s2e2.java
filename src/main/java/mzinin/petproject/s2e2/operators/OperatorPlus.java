@@ -1,13 +1,13 @@
 package mzinin.petproject.s2e2.operators;
 
-import mzinin.petproject.s2e2.Operator;
+import mzinin.petproject.s2e2.AbstractOperator;
 
 
 /**
  * Operator +
  * Concatenates two strings.
  */
-public final class OperatorPlus extends Operator {
+public final class OperatorPlus extends AbstractOperator {
 
     public OperatorPlus() {
         super("+", Priorities.OPERATOR_PLUS, 2);

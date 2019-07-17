@@ -1,6 +1,6 @@
 package mzinin.petproject.s2e2.functions;
 
-import mzinin.petproject.s2e2.Function;
+import mzinin.petproject.s2e2.AbstractFunction;
 
 import java.time.OffsetDateTime;
 
@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
  * Function ADD_DAYS(<datetime>, <days>)
  * Adds days number of days to datetime.
  */
-public final class FunctionAddDays extends Function {
+public final class FunctionAddDays extends AbstractFunction {
 
     public FunctionAddDays() {
         super("ADD_DAYS", 2);

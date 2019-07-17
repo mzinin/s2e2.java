@@ -43,7 +43,7 @@ class EvaluatorTests {
     @Test
     void positiveTest_AddFunction_SupportedFunctionsSize() {
         final Evaluator evaluator = new Evaluator();
-        final Function dummyFunction = makeDummyFunction();
+        final AbstractFunction dummyFunction = makeDummyFunction();
 
         evaluator.addFunction(dummyFunction);
 
@@ -54,7 +54,7 @@ class EvaluatorTests {
     void positiveTest_AddFunction_VerifyTokenizer() {
         final ITokenizer tokenizerMock = mock(ITokenizer.class);
         final Evaluator evaluator = new Evaluator(null, tokenizerMock);
-        final Function dummyFunction = makeDummyFunction();
+        final AbstractFunction dummyFunction = makeDummyFunction();
 
         evaluator.addFunction(dummyFunction);
 
@@ -64,7 +64,7 @@ class EvaluatorTests {
     @Test
     void positiveTest_AddOperator_SupportedOperatorsSize() {
         final Evaluator evaluator = new Evaluator();
-        final Operator dummyOperator = makeDummyOperator();
+        final AbstractOperator dummyOperator = makeDummyOperator();
 
         evaluator.addOperator(dummyOperator);
 
@@ -76,7 +76,7 @@ class EvaluatorTests {
         final IConverter converterMock = mock(IConverter.class);
         final ITokenizer tokenizerMock = mock(ITokenizer.class);
         final Evaluator evaluator = new Evaluator(converterMock, tokenizerMock);
-        final Operator dummyOperator = makeDummyOperator();
+        final AbstractOperator dummyOperator = makeDummyOperator();
 
         evaluator.addOperator(dummyOperator);
 
@@ -88,7 +88,7 @@ class EvaluatorTests {
         final IConverter converterMock = mock(IConverter.class);
         final ITokenizer tokenizerMock = mock(ITokenizer.class);
         final Evaluator evaluator = new Evaluator(converterMock, tokenizerMock);
-        final Operator dummyOperator = makeDummyOperator();
+        final AbstractOperator dummyOperator = makeDummyOperator();
 
         evaluator.addOperator(dummyOperator);
 
@@ -116,7 +116,7 @@ class EvaluatorTests {
         final IConverter converterMock = mock(IConverter.class);
         final ITokenizer tokenizer = new Tokenizer();
         final Evaluator evaluator = new Evaluator(converterMock, tokenizer);
-        final Operator dummyOperator = makeDummyOperator();
+        final AbstractOperator dummyOperator = makeDummyOperator();
 
         final String expression = "A " + dummyOperator.name + " B";
         final List<Token> infixTokens = Arrays.asList(new Token(TokenType.ATOM, "A"),
@@ -139,7 +139,7 @@ class EvaluatorTests {
         final IConverter converter = new Converter();
         final ITokenizer tokenizerMock = mock(ITokenizer.class);
         final Evaluator evaluator = new Evaluator(converter, tokenizerMock);
-        final Operator dummyOperator = makeDummyOperator();
+        final AbstractOperator dummyOperator = makeDummyOperator();
 
         final String expression = "A " + dummyOperator.name + " B";
         final List<Token> infixTokens = Arrays.asList(new Token(TokenType.ATOM, "A"),
@@ -373,11 +373,11 @@ class EvaluatorTests {
         assertTrue(thrown.getMessage().contains("Invalid expression"));
     }
 
-    private static Function makeDummyFunction() {
+    private static AbstractFunction makeDummyFunction() {
         final String dummyName = "Function";
         final int dummyNumberOfArguments = 2;
 
-        return new Function(dummyName, dummyNumberOfArguments){
+        return new AbstractFunction(dummyName, dummyNumberOfArguments){
             protected boolean checkArguments() {
                 return true;
             }
@@ -387,12 +387,12 @@ class EvaluatorTests {
         };
     }
 
-    private static Operator makeDummyOperator() {
+    private static AbstractOperator makeDummyOperator() {
         final String dummyName = "Operator";
         final int dummyPriority = 1;
         final int dummyNumberOfArguments = 2;
 
-        return new Operator(dummyName, dummyPriority, dummyNumberOfArguments){
+        return new AbstractOperator(dummyName, dummyPriority, dummyNumberOfArguments){
             protected boolean checkArguments() {
                 return true;
             }

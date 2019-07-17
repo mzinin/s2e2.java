@@ -16,7 +16,7 @@ public class TestUtils {
         return result;
     }
 
-    public static void invoke(final BaseOperator operator, final Stack<Object> stack) {
+    public static void invoke(final AbstractBaseOperator operator, final Stack<Object> stack) {
         operator.invoke(stack);
     }
 }

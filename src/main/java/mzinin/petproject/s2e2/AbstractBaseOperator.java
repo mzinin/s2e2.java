@@ -6,7 +6,7 @@ import java.util.Stack;
 /**
  * Base class of all functions and operators.
  */
-abstract class BaseOperator {
+abstract class AbstractBaseOperator {
 
     /** 
      * Name of the operator or function.
@@ -29,7 +29,7 @@ abstract class BaseOperator {
      * @param priority Operator's priority.
      * @param numberOfArguments Number of arguments.
      */
-    protected BaseOperator(final String name, final int priority, final int numberOfArguments) {
+    protected AbstractBaseOperator(final String name, final int priority, final int numberOfArguments) {
         this.name = name;
         this.priority = priority;
         this.arguments = new Object[numberOfArguments];
@@ -40,7 +40,7 @@ abstract class BaseOperator {
      * @param stack Stack with arguments.
      * @throws ExpressionException in case of an error.
      */
-    void invoke(final Stack<Object> stack) {
+    /* package */ void invoke(final Stack<Object> stack) {
         if (stack.size() < arguments.length) {
             throw new ExpressionException("Not enough arguments for operator " + name);
         }

@@ -1,13 +1,13 @@
 package mzinin.petproject.s2e2.functions;
 
-import mzinin.petproject.s2e2.Function;
+import mzinin.petproject.s2e2.AbstractFunction;
 
 
 /**
  * Function REPLACE(<source>, <regex>, <replacement>)
  * Returns copy of source with all matches of regex replaced by replacement.
  */
-public final class FunctionReplace extends Function {
+public final class FunctionReplace extends AbstractFunction {
 
     public FunctionReplace() {
         super("REPLACE", 3);

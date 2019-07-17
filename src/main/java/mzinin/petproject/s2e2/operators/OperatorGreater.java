@@ -1,13 +1,13 @@
 package mzinin.petproject.s2e2.operators;
 
-import mzinin.petproject.s2e2.Operator;
+import mzinin.petproject.s2e2.AbstractOperator;
 
 
 /**
  * Operator >
  * Compares two objects.
  */
-public final class OperatorGreater extends Operator {
+public final class OperatorGreater extends AbstractOperator {
 
     public OperatorGreater() {
         super(">", Priorities.OPERATOR_GREATER, 2);

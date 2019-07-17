@@ -26,7 +26,7 @@ final class Converter implements IConverter {
     /**
      * All expected operators and their priorities (precedences).
      */
-    private Map<String, Integer> operators = new HashMap<>();
+    private final Map<String, Integer> operators = new HashMap<>();
 
     /**
      * Add operator expected within expression.

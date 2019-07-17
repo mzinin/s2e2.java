@@ -1,13 +1,13 @@
 package mzinin.petproject.s2e2.operators;
 
-import mzinin.petproject.s2e2.Operator;
+import mzinin.petproject.s2e2.AbstractOperator;
 
 
 /**
  * Operator >=
  * Compares two objects.
  */
-public final class OperatorGreaterOrEqual extends Operator {
+public final class OperatorGreaterOrEqual extends AbstractOperator {
 
     public OperatorGreaterOrEqual() {
         super(">=", Priorities.OPERATOR_GREATER_OR_EQUAL, 2);
@@ -15,10 +15,10 @@ public final class OperatorGreaterOrEqual extends Operator {
 
     @Override
     protected boolean checkArguments() {
-        return (arguments[0] == null && arguments[1] == null) ||
-               (arguments[0] instanceof Comparable &&
-                arguments[1] instanceof Comparable &&
-                arguments[0].getClass().equals(arguments[1].getClass()));
+        return arguments[0] == null && arguments[1] == null ||
+               arguments[0] instanceof Comparable &&
+               arguments[1] instanceof Comparable &&
+               arguments[0].getClass().equals(arguments[1].getClass());
     }
 
     @Override

@@ -1,6 +1,6 @@
 package mzinin.petproject.s2e2.functions;
 
-import mzinin.petproject.s2e2.Function;
+import mzinin.petproject.s2e2.AbstractFunction;
 
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  * Function FORMAT_DATE(<datetime>, <format>)
  * Converts datetime to string according to format
  */
-public final class FunctionFormatDate extends Function {
+public final class FunctionFormatDate extends AbstractFunction {
 
     public FunctionFormatDate() {
         super("FORMAT_DATE", 2);

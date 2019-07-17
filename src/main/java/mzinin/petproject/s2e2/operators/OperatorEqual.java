@@ -1,13 +1,13 @@
 package mzinin.petproject.s2e2.operators;
 
-import mzinin.petproject.s2e2.Operator;
+import mzinin.petproject.s2e2.AbstractOperator;
 
 
 /**
  * Operator ==
  * Compares any two objects.
  */
-public final class OperatorEqual extends Operator {
+public final class OperatorEqual extends AbstractOperator {
 
     public OperatorEqual() {
         super("==", Priorities.OPERATOR_EQUAL, 2);

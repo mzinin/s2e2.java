@@ -1,6 +1,6 @@
 package mzinin.petproject.s2e2.functions;
 
-import mzinin.petproject.s2e2.Function;
+import mzinin.petproject.s2e2.AbstractFunction;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -10,7 +10,7 @@ import java.time.ZoneOffset;
  * Function NOW()
  * Returns current UTC datetime.
  */
-public final class FunctionNow extends Function {
+public final class FunctionNow extends AbstractFunction {
 
     public FunctionNow() {
         super("NOW", 0);

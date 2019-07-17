@@ -1,13 +1,13 @@
 package mzinin.petproject.s2e2.operators;
 
-import mzinin.petproject.s2e2.Operator;
+import mzinin.petproject.s2e2.AbstractOperator;
 
 
 /**
  * Operator !
  * Negates boolean value.
  */
-public final class OperatorNot extends Operator {
+public final class OperatorNot extends AbstractOperator {
 
     public OperatorNot() {
         super("!", Priorities.OPERATOR_NOT, 1);

@@ -1,13 +1,13 @@
 package mzinin.petproject.s2e2.functions;
 
-import mzinin.petproject.s2e2.Function;
+import mzinin.petproject.s2e2.AbstractFunction;
 
 
 /**
  * Function IF(<conition>, <value1>, <value2>)
  * Returns value1 if boolean condition is true, and value2 otherwise.
  */
-public final class FunctionIf extends Function {
+public final class FunctionIf extends AbstractFunction {
 
     public FunctionIf() {
         super("IF", 3);

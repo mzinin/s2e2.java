@@ -1,13 +1,13 @@
 package mzinin.petproject.s2e2.operators;
 
-import mzinin.petproject.s2e2.Operator;
+import mzinin.petproject.s2e2.AbstractOperator;
 
 
 /**
  * Operator <
  * Compares two objects.
  */
-public final class OperatorLess extends Operator {
+public final class OperatorLess extends AbstractOperator {
 
     public OperatorLess() {
         super("<", Priorities.OPERATOR_LESS, 2);

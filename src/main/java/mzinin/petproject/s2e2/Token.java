@@ -9,19 +9,19 @@ final class Token {
     /**
      * Token type.
      */
-    final TokenType type;
+    public final TokenType type;
 
     /**
      * Token string value.
      */
-    final String value;
+    public final String value;
 
     /**
      * Construstor.
      * @param type Type of the token.
      * @param value Value of the token.
      */
-    Token(final TokenType type, final String value) {
+    public Token(final TokenType type, final String value) {
         this.type = type;
         this.value = value;
     }
@@ -32,7 +32,7 @@ final class Token {
      * @return true if tokens are equal, false otherwise.
      */
     @Override
-    public boolean equals(Object another) {
+    public boolean equals(final Object another) {
         if (this == another) {
             return true;
         }
@@ -51,10 +51,10 @@ final class Token {
      * @param b Second object.
      * @return true is objects are equal, false otherwise.
      */
-    private static <T, U> boolean compare(T a, U b) {
-        if (a == null) {
-            return b == null;
+    private static <T> boolean compare(final T left, final T right) {
+        if (left == null) {
+            return right == null;
         }
-        return a.equals(b);
+        return left.equals(right);
     }
 }

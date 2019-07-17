@@ -33,12 +33,12 @@ public final class Evaluator {
     /**
      * Set of all supported functions.
      */
-    private final Map<String, Function> functions = new HashMap<String, Function>();
+    private final Map<String, AbstractFunction> functions = new HashMap<>();
 
     /**
      * Set of all supported operators.
      */
-    private final Map<String, Operator> operators = new HashMap<String, Operator>();
+    private final Map<String, AbstractOperator> operators = new HashMap<>();
 
     /**
      * Converter of infix token sequence into postfix one.
@@ -68,7 +68,7 @@ public final class Evaluator {
      * @param function New supported function.
      * @throws ExpressionException if function or operator with the same name is already added.
      */
-    public void addFunction(final Function function) {
+    public void addFunction(final AbstractFunction function) {
         checkUniqueness(function.name);
 
         functions.put(function.name, function);
@@ -80,7 +80,7 @@ public final class Evaluator {
      * @param operator New supported operator.
      * @throws ExpressionException if function or operator with the same name is already added.
      */
-    public void addOperator(final Operator operator) {
+    public void addOperator(final AbstractOperator operator) {
         checkUniqueness(operator.name);
 
         operators.put(operator.name, operator);
@@ -121,7 +121,7 @@ public final class Evaluator {
      * Get unmodifiable collection of all supported functions.
      * @return Collection of functions.
      */
-    public Collection<Function> getFunctions() {
+    public Collection<AbstractFunction> getFunctions() {
         return Collections.unmodifiableCollection(functions.values());
     }
 
@@ -129,7 +129,7 @@ public final class Evaluator {
      * Get unmodifiable collection of all supported operators.
      * @return Collection of operators.
      */
-    public Collection<Operator> getOperators() {
+    public Collection<AbstractOperator> getOperators() {
         return Collections.unmodifiableCollection(operators.values());
     }
 
@@ -157,7 +157,7 @@ public final class Evaluator {
      * @param converter External IConverter object.
      * @param tokenizer External ITokenizer object.
      */
-    Evaluator(final IConverter converter, final ITokenizer tokenizer) {
+    /* package */ Evaluator(final IConverter converter, final ITokenizer tokenizer) {
         this.converter = converter;
         this.tokenizer = tokenizer;
     }
@@ -224,7 +224,7 @@ public final class Evaluator {
      * @throws ExpressionException in case of an error.
      */
     private void processOperator(final Token token) {
-        final Operator operator = operators.get(token.value);
+        final AbstractOperator operator = operators.get(token.value);
 
         if (operator == null) {
             throw new ExpressionException("Unsupported operator " + token.value);
@@ -239,7 +239,7 @@ public final class Evaluator {
      * @throws ExpressionException in case of an error.
      */
     private void processFunction(final Token token) {
-        final Function function = functions.get(token.value);
+        final AbstractFunction function = functions.get(token.value);
 
         if (function == null) {
             throw new ExpressionException("Unsupported function " + token.value);

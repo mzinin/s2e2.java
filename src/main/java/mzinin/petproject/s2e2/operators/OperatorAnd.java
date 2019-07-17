@@ -1,13 +1,13 @@
 package mzinin.petproject.s2e2.operators;
 
-import mzinin.petproject.s2e2.Operator;
+import mzinin.petproject.s2e2.AbstractOperator;
 
 
 /**
  * Operator &&
  * Computes conjunction of two boolean values.
  */
-public final class OperatorAnd extends Operator {
+public final class OperatorAnd extends AbstractOperator {
 
     public OperatorAnd() {
         super("&&", Priorities.OPERATOR_AND, 2);

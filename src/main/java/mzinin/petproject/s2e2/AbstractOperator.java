@@ -4,7 +4,7 @@ package mzinin.petproject.s2e2;
 /**
  * Base class of all operators.
  */
-public abstract class Operator extends BaseOperator {
+public abstract class AbstractOperator extends AbstractBaseOperator {
 
     /**
      * Constructor.
@@ -12,7 +12,7 @@ public abstract class Operator extends BaseOperator {
      * @param priority Operator's priority.
      * @param numberOfArguments Number of arguments.
      */
-    protected Operator(final String name, final int priority, final int numberOfArguments) {
+    protected AbstractOperator(final String name, final int priority, final int numberOfArguments) {
         super(name, priority, numberOfArguments);
     }
 }

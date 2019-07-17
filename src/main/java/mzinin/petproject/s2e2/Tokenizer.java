@@ -154,6 +154,9 @@ final class Tokenizer implements ITokenizer {
             case RIGHT_BRACKET:
                 addFoundToken(TokenType.RIGHT_BRACKET, String.valueOf(RIGHT_BRACKET));
                 break;
+
+            default:
+                throw new ExpressionException("Unexpected special symbol " + symbol);
         }
     }
 
@@ -278,10 +281,10 @@ final class Tokenizer implements ITokenizer {
         final List<Token> result = new LinkedList<>();
 
         for (final Token token : tokens) {
-            if (!token.type.equals(TokenType.EXPRESSION)) {
-                result.add(token);
-            } else {
+            if (token.type.equals(TokenType.EXPRESSION)) {
                 result.addAll(splitSingleTokenBySingleOperator(token.value, operator));
+            } else {
+                result.add(token);
             }
         }
 
@@ -324,10 +327,10 @@ final class Tokenizer implements ITokenizer {
         final List<Token> tmpTokens = new LinkedList<>();
 
         for (final Token token : tokens) {
-            if (!token.type.equals(TokenType.EXPRESSION)) {
-                tmpTokens.add(token);
-            } else {
+            if (token.type.equals(TokenType.EXPRESSION)) {
                 tmpTokens.add(new Token(TokenType.ATOM, token.value));
+            } else {
+                tmpTokens.add(token);
             }
         }
 
