@@ -46,6 +46,16 @@ final class Token {
     }
 
     /**
+     * Get token hash.
+     */
+    @Override
+    public int hashCode() {
+        final int typeHash = 31 * type.hashCode();
+        final int valueHash = value == null ? 0 : value.hashCode();
+        return typeHash + valueHash;
+    }
+
+    /**
      * Compare any two objects for equality.
      * @param a First object.
      * @param b Second object.

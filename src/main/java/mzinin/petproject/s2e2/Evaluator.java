@@ -56,6 +56,11 @@ public final class Evaluator {
     private Stack<Object> stack;
 
     /**
+     * Expected stack size after processing all tokens.
+     */
+    private static final int FINAL_STACK_SIZE = 1;
+
+    /**
      * Default constructor.
      */
     public Evaluator() {
@@ -254,7 +259,7 @@ public final class Evaluator {
      * @throws ExpressionException in case of an error.
      */
     private String getResultValueFromStack() {
-        if (stack.size() != 1) {
+        if (stack.size() != FINAL_STACK_SIZE) {
             throw new ExpressionException("Invalid expression");
         }
 

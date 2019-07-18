@@ -40,7 +40,7 @@ abstract class AbstractBaseOperator {
      * @param stack Stack with arguments.
      * @throws ExpressionException in case of an error.
      */
-    /* package */ void invoke(final Stack<Object> stack) {
+    /* package */ final void invoke(final Stack<Object> stack) {
         if (stack.size() < arguments.length) {
             throw new ExpressionException("Not enough arguments for operator " + name);
         }

@@ -25,7 +25,7 @@ public final class FunctionFormatDate extends AbstractFunction {
 
         try {
             DateTimeFormatter.ofPattern((String)arguments[1]);
-        } catch (final Exception e) {
+        } catch (final IllegalArgumentException e) {
             return false;
         }
 
