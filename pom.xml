@@ -21,6 +21,8 @@
         <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
 		<maven.site.plugin.version>3.7.1</maven.site.plugin.version>
 		<maven.pmd.plugin.version>3.12.0</maven.pmd.plugin.version>
+		<maven.jxr.plugin.version>3.0.0</maven.jxr.plugin.version>
+		<maven.project.info.reports.plugin.version>3.0.0</maven.project.info.reports.plugin.version>
     </properties>
 
 	<dependencies>
@@ -50,6 +52,12 @@
 					</rulesets>
 				</configuration>
             </plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${maven.jxr.plugin.version}</version>
+			</plugin>
 		</plugins>
 	</reporting>
 
@@ -70,6 +78,12 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>${maven.site.plugin.version}</version>
             </plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>${maven.project.info.reports.plugin.version}</version>
+			</plugin>
 		</plugins>
 	</build>
 

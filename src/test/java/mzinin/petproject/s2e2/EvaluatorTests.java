@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
-import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -293,7 +293,7 @@ class EvaluatorTests {
         final List<Token> wrongTokens = Arrays.asList(new Token(TokenType.ATOM, "A"),
                                                       new Token(TokenType.ATOM, "B"),
                                                       new Token(TokenType.LEFT_BRACKET, "("));
-        when(converterMock.convert(any(List.class))).thenReturn(wrongTokens);
+        when(converterMock.convert(anyList())).thenReturn(wrongTokens);
 
         final ExpressionException thrown = assertThrows(
             ExpressionException.class,
@@ -314,7 +314,7 @@ class EvaluatorTests {
         final List<Token> wrongTokens = Arrays.asList(new Token(TokenType.ATOM, "A"),
                                                       new Token(TokenType.ATOM, "B"),
                                                       new Token(TokenType.OPERATOR, "<>"));
-        when(converterMock.convert(any(List.class))).thenReturn(wrongTokens);
+        when(converterMock.convert(anyList())).thenReturn(wrongTokens);
 
         final ExpressionException thrown = assertThrows(
             ExpressionException.class,
@@ -335,7 +335,7 @@ class EvaluatorTests {
         final List<Token> wrongTokens = Arrays.asList(new Token(TokenType.ATOM, "A"),
                                                       new Token(TokenType.ATOM, "B"),
                                                       new Token(TokenType.FUNCTION, "FUNC"));
-        when(converterMock.convert(any(List.class))).thenReturn(wrongTokens);
+        when(converterMock.convert(anyList())).thenReturn(wrongTokens);
 
         final ExpressionException thrown = assertThrows(
             ExpressionException.class,
