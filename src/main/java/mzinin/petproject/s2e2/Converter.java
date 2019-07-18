@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Stack;
 
 
@@ -35,6 +36,8 @@ final class Converter implements IConverter {
      */
     @Override
     public void addOperator(final String name, final int priority) {
+        Objects.requireNonNull(name);
+
         if (operators.containsKey(name)) {
             throw new ExpressionException("Operator " + name + " is already added");
         }
@@ -50,6 +53,8 @@ final class Converter implements IConverter {
      */
     @Override
     public List<Token> convert(final List<Token> infixExpression) {
+        Objects.requireNonNull(infixExpression);
+
         outputQueue = new LinkedList<>();
         operatorStack = new Stack<>();
 

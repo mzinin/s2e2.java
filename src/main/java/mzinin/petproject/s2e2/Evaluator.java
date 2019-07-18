@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Stack;
 
 
@@ -145,6 +146,8 @@ public final class Evaluator {
      * @throws ExpressionException in case of an error.
      */
     public String evaluate(final String expression) {
+        Objects.requireNonNull(expression);
+
         final List<Token> infixExpression = tokenizer.tokenize(expression);
 
         // a bit of syntax sugar: if expression contains only atoms
@@ -173,6 +176,8 @@ public final class Evaluator {
      * @throws ExpressionException if the name is not unique.
      */
     private void checkUniqueness(final String entityName) {
+        Objects.requireNonNull(entityName);
+
         if (functions.containsKey(entityName)) {
             throw new ExpressionException("Function " + entityName + " is already added");
         }

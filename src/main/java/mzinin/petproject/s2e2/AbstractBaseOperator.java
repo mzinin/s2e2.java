@@ -1,5 +1,6 @@
 package mzinin.petproject.s2e2;
 
+import java.util.Objects;
 import java.util.Stack;
 
 
@@ -30,7 +31,7 @@ abstract class AbstractBaseOperator {
      * @param numberOfArguments Number of arguments.
      */
     protected AbstractBaseOperator(final String name, final int priority, final int numberOfArguments) {
-        this.name = name;
+        this.name = Objects.requireNonNull(name);
         this.priority = priority;
         this.arguments = new Object[numberOfArguments];
     }
@@ -41,6 +42,8 @@ abstract class AbstractBaseOperator {
      * @throws ExpressionException in case of an error.
      */
     /* package */ final void invoke(final Stack<Object> stack) {
+        Objects.requireNonNull(stack);
+
         if (stack.size() < arguments.length) {
             throw new ExpressionException("Not enough arguments for operator " + name);
         }

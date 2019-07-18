@@ -1,5 +1,7 @@
 package mzinin.petproject.s2e2;
 
+import java.util.Objects;
+
 
 /**
  * Token i.e. a unit of some expression.
@@ -22,7 +24,7 @@ final class Token {
      * @param value Value of the token.
      */
     public Token(final TokenType type, final String value) {
-        this.type = type;
+        this.type = Objects.requireNonNull(type);
         this.value = value;
     }
     

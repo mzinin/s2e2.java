@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -55,6 +56,8 @@ final class Tokenizer implements ITokenizer {
      */
     @Override
     public List<Token> tokenize(final String expression) {
+        Objects.requireNonNull(expression);
+
         final InitialSplitter splitter = new InitialSplitter();
         List<Token> tokens = splitter.splitIntoTokens(expression);
         tokens = splitTokensByOperators(tokens);
@@ -67,6 +70,8 @@ final class Tokenizer implements ITokenizer {
      * @throws ExpressionException if the name is not unique.
      */
     private void checkUniqueness(final String entityName) {
+        Objects.requireNonNull(entityName);
+
         if (functions.contains(entityName)) {
             throw new ExpressionException("Function " + entityName + " is already added");
         }
