@@ -53,12 +53,12 @@ class FunctionAddDaysTests {
     void positiveTest_SecondArgumentZero_ResultValue() {
         final FunctionAddDays function = new FunctionAddDays();
         final OffsetDateTime firstAgument = OffsetDateTime.of(2019, 7, 13, 12, 15, 0, 0, ZoneOffset.UTC);
-        final Stack<Object> stack = TestUtils.createStack(firstAgument, "1");
+        final Stack<Object> stack = TestUtils.createStack(firstAgument, "0");
 
         TestUtils.invoke(function, stack);
         final OffsetDateTime functionResult = (OffsetDateTime)stack.peek();
 
-        assertEquals(firstAgument, firstAgument);
+        assertEquals(firstAgument, functionResult);
     }
 
     @Test
