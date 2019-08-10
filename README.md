@@ -204,7 +204,7 @@ void customOperatorExample() {
 
 To compile this project one would need:
 * [JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) >= 8
-* [Maven](https://maven.apache.org/) >= 3.6.0 (minimal tested version)
+* [Maven](https://maven.apache.org/) >= 3.3.9 (minimal tested version)
 
 The rest of dependencies will be handled by maven.
 
