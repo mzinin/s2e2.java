@@ -75,6 +75,7 @@ public final class Evaluator {
      * @throws ExpressionException if function or operator with the same name is already added.
      */
     public void addFunction(final AbstractFunction function) {
+        Objects.requireNonNull(function);
         checkUniqueness(function.name);
 
         functions.put(function.name, function);
@@ -87,6 +88,7 @@ public final class Evaluator {
      * @throws ExpressionException if function or operator with the same name is already added.
      */
     public void addOperator(final AbstractOperator operator) {
+        Objects.requireNonNull(operator);
         checkUniqueness(operator.name);
 
         operators.put(operator.name, operator);

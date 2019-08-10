@@ -243,6 +243,26 @@ class EvaluatorTests {
     }
 
     @Test
+    void negativeTest_AddNullFunction() {
+        final Evaluator evaluator = new Evaluator();
+
+        assertThrows(
+            NullPointerException.class,
+            () -> evaluator.addFunction(null),
+            "Expected Evaluator to throw, but it didn't");
+    }
+
+    @Test
+    void negativeTest_AddNullOperator() {
+        final Evaluator evaluator = new Evaluator();
+
+        assertThrows(
+            NullPointerException.class,
+            () -> evaluator.addOperator(null),
+            "Expected Evaluator to throw, but it didn't");
+    }
+
+    @Test
     void negativeTest_TwoFunctionsWithTheSameName() {
         final Evaluator evaluator = new Evaluator();
         evaluator.addFunction(makeDummyFunction());
