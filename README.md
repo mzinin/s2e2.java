@@ -21,9 +21,9 @@ final String result = evaluator.evaluate(expression);
 
 ## Supported expressions
 
-Supported expressions consist of the following tokens: string literals, operators (unary and binary), functions, predefined constants, round brackets for function's's arguments denoting, commas for function's arguments separation and double quotes for characters escaping. 
+Supported expressions consist of the following tokens: string literals, operators (unary and binary), functions, predefined constants, round brackets for function's arguments denoting, commas for function's arguments separation and double quotes for characters escaping. 
 
-The difference between a function and an operator is that a function is always followed by a pair of round brackets with a list of function's arguments (probably empty) in between, while an operator does not use brackets and, if it is a binary operator, stick between its operands. Also operators can have different priorities a.k.a. precedence.
+The difference between a function and an operator is that a function is always followed by a pair of round brackets with a list of function's arguments (probably empty) in between, while an operator does not use brackets and, if it is a binary operator, sticks between its operands. Also operators can have different priorities a.k.a. precedence.
 
 For example:
 * this is a function of 2 arguments: `FUNC(Arg1, Arg2)`
@@ -53,7 +53,7 @@ There is only one predefined constant - `NULL` - which corresponds to an `null` 
 
 * Function `ADD_DAYS(Datetime, NumberOfDays)`
 
-  Adds days to the provided datetime. `Datetime` must be of `java.time.OffsetDateTime` type and not `null`. `NumberOfDays` is a not `null `string parsable into an any integer. The result is of `java.time.OffsetDateTime` type.
+  Adds days to the provided datetime. `Datetime` must be of `java.time.OffsetDateTime` type and not `null`. `NumberOfDays` is a not `null` string parsable into an any integer. The result is of `java.time.OffsetDateTime` type.
 
 * Function `FORMAT_DATE(Datetime, Format)`
 
