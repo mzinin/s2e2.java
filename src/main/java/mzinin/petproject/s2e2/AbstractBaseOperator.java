@@ -9,19 +9,19 @@ import java.util.Stack;
  */
 abstract class AbstractBaseOperator {
 
-    /** 
+    /**
      * Name of the operator or function.
      */
     public final String name;
 
     /**
      * Priority of the operator.
-     */ 
+     */
     public final int priority;
 
     /**
      * Array of arguments.
-     */ 
+     */
     protected Object arguments[];
 
     /**
@@ -61,7 +61,7 @@ abstract class AbstractBaseOperator {
 
     /**
      * Check if arguments are correct.
-     * @return true is arguments are correct, false otherwise.
+     * @return true if arguments are correct, false otherwise.
      */
     protected abstract boolean checkArguments();
 
