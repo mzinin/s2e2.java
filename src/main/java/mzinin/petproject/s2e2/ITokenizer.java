@@ -4,7 +4,7 @@ import java.util.List;
 
 
 /**
- * Interface for splitting expression string onto list of tokens.
+ * Interface for splitting expression string into list of tokens.
  */
 interface ITokenizer {
 

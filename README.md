@@ -93,7 +93,7 @@ final class CustomFunction extends AbstractFunction {
     }
 }
 
-void customOperatorExample() {
+void customFunctionExample() {
     final Evaluator evaluator = new Evaluator();
 
     evaluator.addStandardFunctions();
@@ -166,7 +166,7 @@ import mzinin.petproject.s2e2.Evaluator;
 final class CustomOperator extends AbstractOperator {
 
     public CustomOperator() {
-        // ~ - symbols of the custon operator
+        // ~ - symbols of the custom operator
         // 600 - priority
         // 1 - number of arguments
         super("~", 600, 1);
